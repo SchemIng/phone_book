@@ -29,16 +29,22 @@
 		<div class="input-group input-group-lg" style="padding-bottom: 20px">
 
 			<span class="input-group-addon"><span
-				class="glyphicon glyphicon-user"></span></span> <input type="text"
+				class="glyphicon glyphicon-th-list"></span></span> <input type="text"
 				name="input_id" class="form-control" placeholder="学号" required
 				autofocus pattern="\d{8}" />
 		</div>
 
 		<div class="input-group input-group-lg" style="padding-bottom: 20px">
 			<span class="input-group-addon"><span
+				class="glyphicon glyphicon-user"></span></span> <input type="text"
+				name="input_name" class="form-control" placeholder="姓名" required />
+
+		</div>
+
+		<div class="input-group input-group-lg" style="padding-bottom: 20px">
+			<span class="input-group-addon"><span
 				class="glyphicon glyphicon-lock"></span></span> <input type="password"
 				name="input_pw" class="form-control" placeholder="密码" required />
-
 		</div>
 
 
@@ -47,6 +53,31 @@
 				class="glyphicon glyphicon-lock"></span></span> <input type="password"
 				class="form-control" id="input_repw" placeholder="再次输入密码" required />
 		</div>
+
+		<div class="input-group input-group-lg" style="padding-bottom: 20px">
+			<span class="input-group-addon"><span
+				class="glyphicon glyphicon-comment"></span></span> <input type="text"
+				class="form-control" name="input_qq" placeholder="QQ" required
+				pattern="[1-9][0-9]{4,14}" />
+		</div>
+
+		<div class="input-group input-group-lg" style="padding-bottom: 20px">
+			<span class="input-group-addon"><span
+				class="glyphicon glyphicon-earphone"></span></span> <input type="text"
+				class="form-control" name="input_tel" placeholder="电话" required
+				pattern="\d{11}" />
+		</div>
+
+		<div class="input-group input-group-lg" style="padding-bottom: 20px">
+			<span class="input-group-addon"><span
+				class="glyphicon glyphicon-home"></span></span> <select
+				class="form-control" name="input_class">
+				<option>软件1301</option>
+				<option>软件1302</option>
+			</select>
+		</div>
+
+
 		<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 
 	</form>

@@ -24,10 +24,10 @@
 <body>
 
 	<%
+		String id = request.getAttribute("id").toString();
 		UserDAO dao = new UserDAO();
-		ResultSet set = dao
-				.queryData(request.getAttribute("id").toString());
-
+		ResultSet set = dao.queryClassData(id);
+		
 		List<User> lists = new ArrayList<User>();
 		while (set.next()) {
 			lists.add(new User(set.getString("id"), set.getString("name"),
@@ -49,20 +49,36 @@
 							<th>姓名</th>
 							<th>电话</th>
 							<th>QQ</th>
+							<th>状态</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%
 							for (int i = 0; i < lists.size(); i++) {
+
+								User user = lists.get(i);
 						%>
 						<tr>
-							<td><%=lists.get(i).getId()%></td>
-							<td><%=lists.get(i).getName()%></td>
-							<td><%=lists.get(i).getTel()%></td>
-							<td><%=lists.get(i).getQq()%></td>
+							<td><%=user.getId()%></td>
+							<td><%=user.getName()%></td>
+							<td><%=user.getTel()%></td>
+							<td><%=user.getQq()%></td>
+							<%
+								if (user.getId().equals(id)) {
+							%>
+							<td><a href="info.jsp?id=<%=id%>">编辑</a></td>
+							<%
+								} else {
+							%>
+							<td>不可编辑</td>
+							<%
+								}
+							%>
+
 						</tr>
 						<%
 							}
+						dao.close();
 						%>
 					</tbody>
 				</table>

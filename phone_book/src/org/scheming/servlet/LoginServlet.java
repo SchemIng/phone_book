@@ -1,7 +1,9 @@
 package org.scheming.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.scheming.db.UserDAO;
+import org.scheming.model.User;
 
 @WebServlet("/base/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -25,15 +28,16 @@ public class LoginServlet extends HttpServlet {
 		input_id = request.getParameter("input_id");
 		input_pw = request.getParameter("input_pw");
 		UserDAO dao = new UserDAO();
-		if (!dao.checkUser(input_id)) {
-			// request.getRequestDispatcher("/base/content.jsp").forward(request,
-			// response);
+		User user = dao.queryUserData(input_id);
+		if (user == null) {
 			request.setAttribute("error_msg", "用户不存在");
 			request.getRequestDispatcher("/base/error.jsp").forward(request,
 					response);
 		} else {
-			if (dao.checkPw(input_id, input_pw)) {
+			if (input_pw.equals(user.getPw())) {
 				request.setAttribute("id", input_id);
+				
+				getServletContext().setAttribute(input_id, user);
 				request.getRequestDispatcher("/base/content.jsp").forward(
 						request, response);
 			} else {

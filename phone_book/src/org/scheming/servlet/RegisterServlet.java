@@ -14,8 +14,6 @@ import org.scheming.model.User;
 @WebServlet("/base/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String input_id;
-	private String input_pw;
 
 	public RegisterServlet() {
 		super();
@@ -25,18 +23,21 @@ public class RegisterServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
-		input_id = request.getParameter("input_id");
-		input_pw = request.getParameter("input_pw");
 
 		User user = new User();
-		user.setId(input_id);
-		user.setPw(input_pw);
+		user.setId(request.getParameter("input_id"));
+		user.setPw(request.getParameter("input_pw"));
+		user.setName(request.getParameter("input_name"));
+		user.setQq(request.getParameter("input_qq"));
+		user.setTel(request.getParameter("input_tel"));
+		user.setCla(request.getParameter("input_class"));
 
 		UserDAO dao = new UserDAO();
-		if (dao.checkUser(input_id)) {
-
-		} else {
+		User reUser = dao.queryUserData(user.getId());
+		if (reUser == null) {
 			dao.add(user);
+		} else {
+
 		}
 
 		dao.close();
