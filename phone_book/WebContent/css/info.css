@@ -1,0 +1,16 @@
+body {
+	padding-top: 80px;
+	padding-bottom: 40px;
+	background-color: #eee;
+}
+
+.form-info {
+	max-width: 400px;
+	padding: 15px;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+.form-info.form-control:focus {
+	z-index: 2;
+}
