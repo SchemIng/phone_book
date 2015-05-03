@@ -46,8 +46,10 @@ public class UserDAO {
 		try {
 
 			for (String key : newData.keySet()) {
-				statement.executeUpdate("update user set " + key + "='"
-						+ newData.get(key) + "' where id='" + id + "';");
+				String sql = "update user set " + key + "='" + newData.get(key)
+						+ "' where id='" + id + "';";
+				statement.executeUpdate(sql);
+				System.out.println(sql);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -35,9 +35,8 @@ public class LoginServlet extends HttpServlet {
 					response);
 		} else {
 			if (input_pw.equals(user.getPw())) {
-				request.setAttribute("id", input_id);
-				
 				getServletContext().setAttribute(input_id, user);
+				User reUser = (User) getServletContext().getAttribute(input_id);
 				request.getRequestDispatcher("/base/content.jsp").forward(
 						request, response);
 			} else {

@@ -1,3 +1,6 @@
+<%@page import="java.util.Set"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.scheming.model.User"%>
 <%@page import="java.util.List"%>
@@ -24,16 +27,17 @@
 <body>
 
 	<%
-		String id = request.getAttribute("id").toString();
+		String id = request.getParameter("input_id");
 		UserDAO dao = new UserDAO();
 		ResultSet set = dao.queryClassData(id);
-		
+
 		List<User> lists = new ArrayList<User>();
 		while (set.next()) {
 			lists.add(new User(set.getString("id"), set.getString("name"),
-					null, null, set.getString("tel"), set.getString("qq"),
+					null, set.getString("class"), set.getString("tel"), set.getString("qq"),
 					false));
 		}
+		getServletContext().setAttribute("lists_" + id, lists);
 		set.first();
 	%>
 
@@ -78,12 +82,17 @@
 						</tr>
 						<%
 							}
-						dao.close();
+							dao.close();
 						%>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+
+	<a type="button" class="btn btn-primary"
+		href="ExportServlet?id=<%="lists_" + id%>"
+		style="float: right; margin-right: 48px;">导出Excel</a>
+
 </body>
 </html>
