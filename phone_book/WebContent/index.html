@@ -1,63 +1,266 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html class="no-js" lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>班级通讯录</title>
-
-<!-- Bootstrap core CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--main style-->
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/indexstyle.css">
+<!--background slider style-->
+<link rel="stylesheet" type="text/css" href="css/slideshow.css" />
+<!--google font style-->
 <link
-	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"
-	rel="stylesheet">
+	href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/font-awesome.min.css">
 
-<!-- Custom styles for this template -->
-<link href="css/cover.css" rel="stylesheet">
-
+<noscript>
+	<link rel="stylesheet" type="text/css" href="css/fallback.css" />
+</noscript>
 </head>
+<body>
+	<!--wrapper start-->
+	<div class="wrapper" id="wrapper">
 
-<body background="img/body_bg.png">
-
-	<div class="site-wrapper">
-
-		<div class="site-wrapper-inner">
-
-			<div class="cover-container">
-
-				<div class="inner cover">
-					<h1 class="cover-heading" style="padding-bottom: 34px;">茫茫人海，你我相连。</h1>
-					<p class="lead">
-						<a href="login.html" class="btn btn-lg btn-default">GO!</a>
-					</p>
+		<div class="copyrights">
+			Collect from <a href="http://www.cssmoban.com/">免费模板</a>
+		</div>
+		<!--protfolio start-->
+		<section class="protfolio" id="protfolio">
+			<div class="container">
+				<div class="heading">
+					<h2>Portfolio</h2>
+					<p>showcase of my latest works</p>
 				</div>
+				<div class="portfolioFilter">
+					<ul>
+						<li><a href="#" data-filter="*" class="current">All</a></li>
+						<li><a href="#" data-filter=".photos">Photos</a></li>
+						<li><a href="#" data-filter=".branding">Branding</a></li>
+						<li><a href="#" data-filter=".illustration">Illustration</a></li>
+					</ul>
+				</div>
+				<ul class="portfolioContainer row">
+					<li class="photos col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img1.jpg"
+									title="Project Title1" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img1.jpg" alt="">
+						</div>
+					</li>
+					<li
+						class="branding illustration col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img2.jpg"
+									title="Project Title2" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img2.jpg" alt="">
+						</div>
+					</li>
+					<li class="illustration col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img3.jpg"
+									title="Project Title3" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img3.jpg" alt="">
+						</div>
+					</li>
+					<li
+						class="branding illustration col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img4.jpg"
+									title="Project Title4" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img4.jpg" alt="">
+						</div>
+					</li>
+					<li class="illustration photos col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img5.jpg"
+									title="Project Title5" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img5.jpg" alt="">
+						</div>
+					</li>
+					<li class="branding photos col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img6.jpg"
+									title="Project Title6" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img6.jpg" alt="">
+						</div>
+					</li>
+					<li class=" photos col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img7.jpg"
+									title="Project Title7" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img7.jpg" alt="">
+						</div>
+					</li>
+					<li class="branding col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<div class="lightCon">
+							<span class="hoverBox"> <span class="smallIcon"> <a
+									rel="lightbox-demo" href="images/portfolio/big/img8.jpg"
+									title="Project Title8" class="zoom lb lb_warsaw1"><i
+										class="fa fa-search fa-2x"></i></a> <a
+									href="http://www.swust.edu.cn/" title="Project Link"
+									target="_blank" class="linKed"><i class="fa fa-link fa-2x"></i></a>
+							</span>
+							</span> <img src="images/portfolio/thumb/img8.jpg" alt="">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
 
-				<div class="mastfoot">
-					<div class="inner">
-						<p>
-							新浪微博 <a href="http://weibo.com/shihaoyang94">Scheming13</a>,
-						</p>
+		<!--about me start-->
+		<section class="aboutme" id="aboutme">
+			<div class="container">
+				<div class="heading">
+					<h2>About me</h2>
+					<p>A small introduction about my self</p>
+				</div>
+				<div class="row">
+					<div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7">
+						<h3>Jonathan Doe</h3>
+						<h4 class="subHeading">Webdesigner & Web Developer from
+							Melbourne</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna
+							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+							aute irure dolor in reprehenderit in voluptate velit esse cillum
+							dolore eu fugiat. cillum dolore eu fugiat nulla pariatur. olore
+							magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+							ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>nulla pariatur.uis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							olore magna aliqua. Ut enim ad minim veniam, quis nostrud
+							exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat.</p>
+						<a href="#" class="bntDownload">Download Printable Resume</a>
+					</div>
+					<div
+						class=" col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1 proPic">
+						<img src="images/about_me.jpg" alt="" class="img-circle topmar">
 					</div>
 				</div>
-
 			</div>
-
-		</div>
-
+		</section>
+		<!--about me end-->
+		<!--contact end-->
+		<!--footer start-->
+		<section class="footer" id="footer">
+			<div class="container">
+				<ul>
+					<li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin fa-2x"></i></a></li>
+					<li><a href="#"><i class="fa fa-pinterest fa-2x"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble fa-2x"></i></a></li>
+					<li><a href="#"><i class="fa fa-rss fa-2x"></i></a></li>
+				</ul>
+			</div>
+		</section>
+		<!--footer end-->
 	</div>
+	<!--wrapper end-->
+	<!--modernizr js-->
+	<script type="text/javascript" src="js/modernizr.custom.26633.js"></script>
+	<!--jquary min js-->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.gridrotator.js"></script>
+	<!--for custom jquary-->
+	<script type="text/javascript" src="js/custom.js"></script>
+	<!--for placeholder jquary-->
+	<script type="text/javascript" src="js/jquery.placeholder.js"></script>
+	<!--for menu jquary-->
+	<script type="text/javascript" src="js/stickUp.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$(document).ready(function() {
+				//enabling stickUp on the '.navbar-wrapper' class
+				$('.navbar-wrapper').stickUp({
+					parts : {
+						0 : 'banner',
+						1 : 'aboutme',
+						2 : 'technical',
+						3 : 'exprience',
+						4 : 'education',
+						5 : 'protfolio',
+						6 : 'contact'
+					},
+					itemClass : 'menuItem',
+					itemHover : 'active',
+					topMargin : 'auto'
+				});
+			});
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-	<script
-		src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+			$(".navbar.navbar-inverse.navbar-static-top a").click(function() {
+				$(".navbar-collapse").addClass("hideClass");
+			});
+
+			$(".navbar.navbar-inverse.navbar-static-top a").click(function() {
+				$(".navbar-collapse").addClass("collapse");
+			});
+
+			$(".navbar.navbar-inverse.navbar-static-top a").click(function() {
+				$(".navbar-collapse").removeClass("in");
+			});
+
+			$(".navbar-toggle").click(function() {
+				$(".navbar-collapse").removeClass("hideClass");
+			});
+
+		});
+	</script>
+	<!--for portfoli filter jquary-->
+	<script src="js/jquery.isotope.js" type="text/javascript"></script>
+	<!--for portfoli lightbox -->
+	<link type="text/css" rel="stylesheet" id="theme"
+		href="css/jquery-ui-1.8.16.custom.css">
+	<link type="text/css" rel="stylesheet" href="css/lightbox.min.css">
+	<script type="text/javascript" src="js/jquery.ui.widget.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.rlightbox.js"></script>
+	<!--for skill chat jquary-->
+	<script type="text/css" src="js/jquery.easing.min.js"></script>
+	<script type="text/css" src="js/jquery.easypiechart.js"></script>
+	<!--contact form js-->
+	<script type="text/javascript" src="js/jquery.contact.js"></script>
 </body>
 </html>
