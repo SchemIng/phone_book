@@ -21,7 +21,7 @@
 <link href="../css/register.css" rel="stylesheet">
 
 </head>
-<body background="../img/login_bg.jpg">
+<body background="img/login_bg.jpg">
 	<form class="form-signin" action="RegisterServlet" method="post"
 		role="form">
 		<h2 class="form-signin-heading" align="center">注册</h2>
