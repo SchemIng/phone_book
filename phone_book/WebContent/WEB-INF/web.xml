@@ -6,11 +6,6 @@
 	<display-name>Phone_Book</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- session config -->
 	<session-config>
@@ -31,7 +26,7 @@
 		<filter-class>org.scheming.filter.IsLoginFilter</filter-class>
 		<init-param>
 			<param-name>login_page</param-name>
-			<param-value>/login.html</param-value>
+			<param-value>../login.html</param-value>
 		</init-param>
 	</filter>
 

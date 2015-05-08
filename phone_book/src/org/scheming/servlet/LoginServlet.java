@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.scheming.db.UserDAO;
 import org.scheming.model.User;
 
-@WebServlet("/base/LoginServlet")
+@WebServlet("/base/login.action")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String input_id;

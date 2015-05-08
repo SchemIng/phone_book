@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.scheming.db.UserDAO;
 import org.scheming.model.User;
 
-@WebServlet("/base/RegisterServlet")
+@WebServlet("/base/register.action")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

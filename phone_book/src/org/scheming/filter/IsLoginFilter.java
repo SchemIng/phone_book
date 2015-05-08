@@ -46,6 +46,7 @@ public class IsLoginFilter implements Filter {
 		if (session.getAttribute("id") == null
 				|| session.getAttribute("id").equals("")) {
 			httpServletResponse.sendRedirect(page_url);
+			return;
 		}
 		chain.doFilter(request, response);
 	}
