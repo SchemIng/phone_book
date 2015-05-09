@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.scheming.db.UserDAO;
 import org.scheming.model.User;
 
-@WebServlet("/base/login.action")
+@WebServlet("/login.action")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String input_id;
@@ -31,18 +31,21 @@ public class LoginServlet extends HttpServlet {
 		User user = dao.queryUserData(input_id);
 		if (user == null) {
 			request.setAttribute("error_msg", "用户不存在");
-			request.getRequestDispatcher("/base/error.jsp").forward(request,
+			request.getRequestDispatcher("base/error.jsp").forward(request,
 					response);
+			// response.sendRedirect("/base/error.jsp");
 		} else {
 			if (input_pw.equals(user.getPw())) {
-				getServletContext().setAttribute(input_id, user);
-				User reUser = (User) getServletContext().getAttribute(input_id);
-				request.getRequestDispatcher("/base/content.jsp").forward(
-						request, response);
+//				getServletContext().setAttribute(input_id, user);
+//				request.getRequestDispatcher("base/contact.jsp").forward(
+//						request, response);
+
+				request.getSession().setAttribute("user_id", input_id);
+				 response.sendRedirect("base/contact.jsp");
 			} else {
 				request.setAttribute("error_msg", "密码错误");
-				request.getRequestDispatcher("/base/error.jsp").forward(
-						request, response);
+				request.getRequestDispatcher("base/error.jsp").forward(request,
+						response);
 			}
 		}
 

@@ -43,8 +43,7 @@ public class IsLoginFilter implements Filter {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 		HttpSession session = httpServletRequest.getSession();
-		if (session.getAttribute("id") == null
-				|| session.getAttribute("id").equals("")) {
+		if (session.getAttribute("user_id") == null) {
 			httpServletResponse.sendRedirect(page_url);
 			return;
 		}
