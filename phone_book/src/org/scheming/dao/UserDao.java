@@ -11,7 +11,7 @@ import java.util.Map;
 import org.scheming.db.DBHelp;
 import org.scheming.model.User;
 
-public class UserDAO implements IDAO {
+public class UserDao implements IDAO {
 
 	private Connection connection;
 	private Statement statement;
@@ -53,7 +53,6 @@ public class UserDAO implements IDAO {
 				String sql = "update user set " + key + "='" + newData.get(key)
 						+ "' where id='" + id + "';";
 				statement.executeUpdate(sql);
-				System.out.println(sql);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,9 +89,8 @@ public class UserDAO implements IDAO {
 	 * @return
 	 */
 	@Override
-	public List<Object> queryData(String id) {
+	public Object queryData(String id) {
 		ResultSet results;
-		List<Object> users = new ArrayList<Object>();
 		User user = null;
 		try {
 			results = statement.executeQuery("select * from user where id="
@@ -101,13 +99,12 @@ public class UserDAO implements IDAO {
 				user = new User(results.getString("id"),
 						results.getString("name"), results.getString("pw"),
 						results.getString("class"), results.getString("tel"),
-						results.getString("qq"), false);
-				users.add(user);
+						results.getString("qq"), results.getBoolean("ismaster"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return users;
+		return user;
 	}
 
 	public void close() {

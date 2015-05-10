@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.scheming.dao.DAOFactory;
-import org.scheming.dao.UserDAO;
+import org.scheming.dao.DaoFactory;
+import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
 @WebServlet("/login.action")
@@ -26,8 +26,8 @@ public class LoginServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		input_id = request.getParameter("input_id");
 		input_pw = request.getParameter("input_pw");
-		UserDAO dao = (UserDAO) DAOFactory.getUserDaoInstance();
-		User user = (User) dao.queryData(input_id).get(0);
+		UserDao dao = (UserDao) DaoFactory.getUserDaoInstance();
+		User user = (User) dao.queryData(input_id);
 		if (user == null) {
 			request.setAttribute("error_msg", "用户不存在");
 			request.getRequestDispatcher("base/error.jsp").forward(request,
@@ -35,12 +35,10 @@ public class LoginServlet extends HttpServlet {
 			// response.sendRedirect("/base/error.jsp");
 		} else {
 			if (input_pw.equals(user.getPw())) {
-				// getServletContext().setAttribute(input_id, user);
-				// request.getRequestDispatcher("base/contact.jsp").forward(
-				// request, response);
-
 				request.getSession().setAttribute("user_id", input_id);
 				request.getSession().setAttribute("user", user);
+				request.getSession()
+						.setAttribute("ismaster", Boolean.valueOf(user.isIsmaster()));
 				response.sendRedirect("base/contact.jsp");
 			} else {
 				request.setAttribute("error_msg", "密码错误");

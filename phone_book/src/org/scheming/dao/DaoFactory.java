@@ -6,14 +6,14 @@ package org.scheming.dao;
  * @Date 2015年5月10日 下午2:37:02
  * @TODO
  */
-public class DAOFactory {
+public class DaoFactory {
 
 	private static IDAO user_dao, class_dao;
 
 	public static IDAO getUserDaoInstance() {
 		if (user_dao == null) {
 			try {
-				user_dao = (IDAO) Class.forName("org.scheming.dao.UserDAO")
+				user_dao = (IDAO) Class.forName("org.scheming.dao.UserDao")
 						.newInstance();
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -28,6 +28,18 @@ public class DAOFactory {
 	}
 
 	public static IDAO getClassDaoInstance() {
+		if (class_dao == null) {
+			try {
+				class_dao = (IDAO) Class.forName("org.scheming.dao.ClassDao")
+						.newInstance();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 
 		return class_dao;
 	}

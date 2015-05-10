@@ -10,10 +10,36 @@ import java.util.Map;
  * @TODO
  */
 public interface IDAO {
+	/**
+	 * 添加
+	 * 
+	 * @param data
+	 * @author Scheming
+	 * @date 2015年5月10日 下午5:06:56
+	 * @TODO
+	 */
 	public void add(Object data);
 
+	/**
+	 * 更新
+	 * 
+	 * @param id
+	 * @param newData
+	 * @author Scheming
+	 * @date 2015年5月10日 下午5:06:57
+	 * @TODO
+	 */
 	public void updateUser(String id, Map<String, String> newData);
 
-	public List<Object> queryData(String id);
+	/**
+	 * 查询
+	 * 
+	 * @param id
+	 * @return
+	 * @author Scheming
+	 * @date 2015年5月10日 下午5:07:00
+	 * @TODO
+	 */
+	public Object queryData(String id);
 
 }

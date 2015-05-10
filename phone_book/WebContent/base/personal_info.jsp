@@ -1,3 +1,7 @@
+<%@page import="org.scheming.dao.ClassDao"%>
+<%@page import="org.scheming.dao.DaoFactory"%>
+<%@page import="org.scheming.model.ClassModel"%>
+<%@page import="java.util.List"%>
 <%@page import="org.scheming.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -39,7 +43,7 @@
 					User user = (User) request.getSession().getAttribute("user");
 				%>
 
-				<form class="form-info" action="UpdateServlet" method="post"
+				<form class="form-info" action="update.action" method="post"
 					role="form">
 					<div class="form-group">
 						<div class="col-md-12">
@@ -92,8 +96,24 @@
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-phone"></i> <select class="form-control"
 									name="input_class">
-									<option>软件1301</option>
-									<option>软件1302</option>
+									<%
+										String cla = user.getCla();
+										List<ClassModel> classModels = ((ClassDao) DaoFactory
+												.getClassDaoInstance()).queryAll();
+										for (ClassModel classModel : classModels) {
+											if (cla.equals(classModel.getName())) {
+									%>
+									<option selected="selected"><%=classModel.getName()%></option>
+									<%
+										} else {
+									%>
+									<option><%=classModel.getName()%></option>
+									<%
+										}
+									%>
+									<%
+										}
+									%>
 								</select>
 							</div>
 						</div>

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.scheming.dao.DAOFactory;
-import org.scheming.dao.UserDAO;
+import org.scheming.dao.DaoFactory;
+import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
 @WebServlet("/register.action")
@@ -33,8 +33,8 @@ public class RegisterServlet extends HttpServlet {
 		user.setTel(request.getParameter("input_tel"));
 		user.setCla(request.getParameter("input_class"));
 
-		UserDAO dao = (UserDAO) DAOFactory.getUserDaoInstance();
-		User reUser = (User) dao.queryData(user.getId()).get(0);
+		UserDao dao = (UserDao) DaoFactory.getUserDaoInstance();
+		User reUser = (User) dao.queryData(user.getId());
 		if (reUser == null) {
 			dao.add(user);
 		} else {
