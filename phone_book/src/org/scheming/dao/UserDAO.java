@@ -1,4 +1,4 @@
-package org.scheming.db;
+package org.scheming.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.scheming.db.DBHelp;
 import org.scheming.model.User;
 
-public class UserDAO {
+public class UserDAO implements IDAO {
 
 	private Connection connection;
 	private Statement statement;
 
-	public UserDAO() {
-		connection = DBHelp.getConnection();
+	{
 		try {
+			connection = DBHelp.getConnection();
 			statement = connection.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -27,9 +28,11 @@ public class UserDAO {
 	/**
 	 * 添加用户
 	 * 
-	 * @param user
+	 * @param data
 	 */
-	public void add(User user) {
+	@Override
+	public void add(Object data) {
+		User user = (User) data;
 		String sql = "insert into user values('" + user.getId() + "','"
 				+ user.getPw() + "','" + user.getCla() + "','" + user.getTel()
 				+ "','" + user.getQq() + "','" + user.getName() + "',"
@@ -42,6 +45,7 @@ public class UserDAO {
 		System.out.println(sql);
 	}
 
+	@Override
 	public void updateUser(String id, Map<String, String> newData) {
 		try {
 
@@ -55,49 +59,6 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-
-	// /**
-	// * @param id
-	// * @return true 存在该用户
-	// */
-	// public boolean checkUser(String id) {
-	//
-	// try {
-	// ResultSet results = statement
-	// .executeQuery("select * from user where id=" + id + ";");
-	// if (results.next()) {
-	// return true;
-	// }
-	//
-	// } catch (SQLException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	//
-	// return false;
-	// }
-
-	// /**
-	// * 检查密码
-	// *
-	// * @param id
-	// * @param pw
-	// * @return
-	// */
-	// public boolean checkPw(String id, String pw) {
-	// try {
-	// ResultSet results = statement
-	// .executeQuery("select * from user where id=" + id + ";");
-	// if (results.next() && pw.equals(results.getString("pw"))) {
-	// return true;
-	// } else {
-	// return false;
-	// }
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// return false;
-	// }
 
 	/**
 	 * 查询班级里所有人信息
@@ -128,8 +89,10 @@ public class UserDAO {
 	 * @param id
 	 * @return
 	 */
-	public User queryUserData(String id) {
+	@Override
+	public List<Object> queryData(String id) {
 		ResultSet results;
+		List<Object> users = new ArrayList<Object>();
 		User user = null;
 		try {
 			results = statement.executeQuery("select * from user where id="
@@ -139,11 +102,12 @@ public class UserDAO {
 						results.getString("name"), results.getString("pw"),
 						results.getString("class"), results.getString("tel"),
 						results.getString("qq"), false);
+				users.add(user);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
+		return users;
 	}
 
 	public void close() {

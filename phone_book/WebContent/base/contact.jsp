@@ -5,7 +5,7 @@
 <%@page import="org.scheming.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="org.scheming.db.UserDAO"%>
+<%@page import="org.scheming.dao.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,8 +24,6 @@
 <link
 	href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300'
 	rel='stylesheet' type='text/css'>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap-modal.js"></script>
 </head>
 <body>
 	<%
@@ -101,7 +99,7 @@
 							<%
 								if (user.getId().equals(id)) {
 							%>
-							<td><a href="<%="info.jsp"%>"><%=user.getName()%></a></td>
+							<td><a href="<%="personal_info.jsp"%>"><%=user.getName()%></a></td>
 							<%
 								} else {
 							%>

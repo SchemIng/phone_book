@@ -1,6 +1,5 @@
 package org.scheming.servlet;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -15,10 +14,9 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.scheming.model.User;
 
-@WebServlet("/base/ExportServlet")
+@WebServlet("/export.action")
 public class ExportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

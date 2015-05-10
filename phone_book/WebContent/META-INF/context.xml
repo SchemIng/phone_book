@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	<Resource name="jdbc/test" type="javax.sql.DataSource"
+		password="shy66017" driverClassName="com.mysql.jdbc.Driver" maxIdle="4"
+		username="root" url="jdbc:mysql://127.0.0.1:3306/test" maxActive="8" />
+</Context>

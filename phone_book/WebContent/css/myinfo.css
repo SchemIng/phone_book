@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+body {
+	margin-top: 50px;
+	padding: 0px;
+	background: #c8cdd2 url(../images/table_bg.jpg);
+	background-size: cover;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.btn-primary {
+	margin-top: 18px;
+	width: 240px;
+}
+
+.btn-g {
+	text-align: center;
+}
+
+.form-control{
+	color: #0F0F0F;
+}
