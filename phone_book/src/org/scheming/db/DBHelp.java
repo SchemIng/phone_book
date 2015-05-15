@@ -8,6 +8,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.scheming.dao.ClassDao;
+
 public class DBHelp {
 	private static DataSource dataSource = null;
 
@@ -25,4 +27,5 @@ public class DBHelp {
 	public static Connection getConnection() throws SQLException {
 		return dataSource.getConnection();
 	}
+
 }

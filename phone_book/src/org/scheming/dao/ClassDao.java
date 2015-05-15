@@ -10,7 +10,6 @@ import java.util.Map;
 
 import org.scheming.db.DBHelp;
 import org.scheming.model.ClassModel;
-import org.scheming.model.User;
 
 /**
  * 

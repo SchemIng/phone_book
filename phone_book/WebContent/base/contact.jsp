@@ -60,7 +60,7 @@
 					<button class="btn btn-default" type="submit">搜索</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="navbar-link" href="#">导出Excel表格</a></li>
+					<li><a class="navbar-link" href="export.action">导出Excel表格</a></li>
 				</ul>
 
 			</div>
@@ -99,9 +99,12 @@
 
 							<td><%=i + 1%></td>
 							<%
-								if (user.getId().equals(id)) {
+								if (user.getId().equals(id)
+											|| (Boolean) request.getSession().getAttribute(
+													"ismaster")) {
 							%>
-							<td><a href="<%="personal_info.jsp"%>"><%=user.getName()%></a></td>
+							<td><a
+								href="<%="personal_info.jsp?user_id=" + user.getId()%>"><%=user.getName()%></a></td>
 							<%
 								} else {
 							%>
@@ -112,9 +115,10 @@
 							<td><%=user.getQq()%></td>
 							<td><%=user.getTel()%></td>
 							<%
-								if ((Boolean)request.getSession().getAttribute("ismaster")) {
+								if ((Boolean) request.getSession().getAttribute("ismaster")) {
 							%>
-							<td><a class="fa fa-trash-o" href="#"></a></td>
+							<td><a class="fa fa-trash-o"
+								href=<%="delete.action?user_id=" + user.getId()%>></a></td>
 							<%
 								}
 							%>

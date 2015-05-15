@@ -16,7 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.scheming.model.User;
 
-@WebServlet("/export.action")
+@WebServlet("/base/export.action")
 public class ExportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +28,7 @@ public class ExportServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		List<User> lists = (List<User>) getServletContext().getAttribute(
-				request.getParameter("id"));
+				"lists_" + request.getSession().getAttribute("user_id"));
 
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("Content-Disposition", "inline; filename="

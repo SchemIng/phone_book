@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.scheming.db.DBHelp;
@@ -105,6 +103,15 @@ public class UserDao implements IDAO {
 			e.printStackTrace();
 		}
 		return user;
+	}
+
+	public void delete(String id) {
+		try {
+			statement.execute("DELETE FROM `test`.`user` WHERE `id`='" + id
+					+ "';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void close() {

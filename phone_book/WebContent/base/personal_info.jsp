@@ -1,3 +1,4 @@
+<%@page import="org.scheming.dao.UserDao"%>
 <%@page import="org.scheming.dao.ClassDao"%>
 <%@page import="org.scheming.dao.DaoFactory"%>
 <%@page import="org.scheming.model.ClassModel"%>
@@ -39,8 +40,9 @@
 			<div class="col-md-4">
 
 				<%
-					String id = (String) request.getSession().getAttribute("user_id");
-					User user = (User) request.getSession().getAttribute("user");
+					String id = (String) request.getParameter("user_id");
+					User user = (User) ((UserDao) DaoFactory.getUserDaoInstance())
+							.queryData(id);
 				%>
 
 				<form class="form-info" action="update.action" method="post"
@@ -61,9 +63,8 @@
 							<label for="email" class="control-label">姓名</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-user"></i> <input type="email" name="input_name"
-									value="<%=user.getName()%>" readonly="readonly"
-									required="required" class="form-control" id="email"
-									placeholder="">
+									value="<%=user.getName()%>" required="required"
+									class="form-control" id="email" placeholder="">
 							</div>
 						</div>
 					</div>
