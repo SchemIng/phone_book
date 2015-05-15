@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.scheming.db.DBHelp;
@@ -40,7 +42,6 @@ public class UserDao implements IDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(sql);
 	}
 
 	@Override
@@ -105,6 +106,14 @@ public class UserDao implements IDAO {
 		return user;
 	}
 
+	/**
+	 * 删除
+	 * 
+	 * @param id
+	 * @author Scheming
+	 * @date 2015年5月15日 下午2:15:09
+	 * @TODO
+	 */
 	public void delete(String id) {
 		try {
 			statement.execute("DELETE FROM `test`.`user` WHERE `id`='" + id
@@ -112,6 +121,31 @@ public class UserDao implements IDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @param name
+	 * @return
+	 * @author Scheming
+	 * @date 2015年5月15日 下午2:25:14
+	 * @TODO
+	 */
+	public List<User> queryByName(String name) {
+		List<User> users = new ArrayList<User>();
+		try {
+			ResultSet results = statement
+					.executeQuery("select * from user where name='" + name
+							+ "';");
+			while (results.next()) {
+				users.add(new User(results.getString("id"), results
+						.getString("name"), results.getString("pw"), results
+						.getString("class"), results.getString("tel"), results
+						.getString("qq"), results.getBoolean("ismaster")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
 	}
 
 	public void close() {

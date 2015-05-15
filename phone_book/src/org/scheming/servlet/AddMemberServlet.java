@@ -12,20 +12,19 @@ import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
-@WebServlet("/register.action")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/addmember.action")
+public class AddMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public RegisterServlet() {
+	public AddMemberServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		User user = new User();
 		user.setId(request.getParameter("input_id"));
-		user.setPw(request.getParameter("input_pw"));
+		user.setPw(request.getParameter("input_id"));
 		user.setName(request.getParameter("input_name"));
 		user.setQq(request.getParameter("input_qq"));
 		user.setTel(request.getParameter("input_tel"));
@@ -35,10 +34,6 @@ public class RegisterServlet extends HttpServlet {
 		User reUser = (User) dao.queryData(user.getId());
 		if (reUser == null) {
 			dao.add(user);
-			request.getSession().setAttribute("user_id", user.getId());
-			request.getSession().setAttribute("user", user);
-			request.getSession().setAttribute("ismaster",
-					Boolean.valueOf(user.isIsmaster()));
 			response.sendRedirect("base/contact.jsp");
 		} else {
 

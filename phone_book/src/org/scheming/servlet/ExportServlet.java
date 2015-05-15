@@ -55,7 +55,6 @@ public class ExportServlet extends HttpServlet {
 		for (int i = 0; i < lists.size() + 1; i++) {
 			HSSFRow row = sheet.createRow(i);
 			if (i == 0) {
-				// row.setHeight((short) 10);
 				for (int j = 0; j < column.length; j++) {
 					HSSFCell cell = row.createCell(j);
 					cell.setCellType(HSSFCell.CELL_TYPE_STRING);

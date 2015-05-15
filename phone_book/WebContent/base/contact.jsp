@@ -31,16 +31,21 @@
 	<%
 		String id = (String) request.getSession().getAttribute("user_id");
 		UserDao dao = (UserDao) DaoFactory.getUserDaoInstance();
-		ResultSet set = dao.queryClassData(id);
-
 		List<User> lists = new ArrayList<User>();
-		while (set.next()) {
-			lists.add(new User(set.getString("id"), set.getString("name"),
-					null, set.getString("class"), set.getString("tel"), set
-							.getString("qq"), set.getBoolean("ismaster")));
+		if (request.getParameter("data") == null) {
+			ResultSet set = dao.queryClassData(id);
+
+			while (set.next()) {
+				lists.add(new User(set.getString("id"), set
+						.getString("name"), null, set.getString("class"),
+						set.getString("tel"), set.getString("qq"), set
+								.getBoolean("ismaster")));
+			}
+			getServletContext().setAttribute("lists_" + id, lists);
+			set.first();
+		} else {
+			lists = dao.queryByName(request.getParameter("data"));
 		}
-		getServletContext().setAttribute("lists_" + id, lists);
-		set.first();
 	%>
 	<div class="container-fluid">
 		<div class="row-fluid">
@@ -50,12 +55,21 @@
 					data-target="#navbar-collapse-01">
 					<span class="sr-only">Toggle navigation</span>
 				</button>
-				<a class="navbar-brand" href="../index.html">Contact</a>
+				<a class="navbar-brand" href="#"><%=lists.get(0).getCla()%></a>
+				<%
+					if ((Boolean) request.getSession().getAttribute("ismaster")) {
+				%>
+				<a class="navbar-brand" href="addmember.jsp">添加成员</a>
+				<%
+					}
+				%>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-01">
-				<form role="search" class="navbar-form navbar-right">
+				<form role="search" class="navbar-form navbar-right"
+					action="contact.jsp">
 					<div class="form-group">
-						<input type="text" placeholder="通过姓名搜索" class="form-control">
+						<input type="text" placeholder="通过姓名搜索" class="form-control"
+							name="data">
 					</div>
 					<button class="btn btn-default" type="submit">搜索</button>
 				</form>

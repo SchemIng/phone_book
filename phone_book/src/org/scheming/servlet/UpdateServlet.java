@@ -29,8 +29,10 @@ public class UpdateServlet extends HttpServlet {
 		newUser.put("tel", request.getParameter("input_tel"));
 		newUser.put("qq", request.getParameter("input_qq"));
 		newUser.put("name", request.getParameter("input_name"));
-		dao.updateUser(request.getSession().getAttribute("user_id").toString(),
-				newUser);
+		if ((Boolean) request.getSession().getAttribute("ismaster")) {
+			newUser.put("pw", request.getParameter("input_pw"));
+		}
+		dao.updateUser(request.getParameter("input_id"), newUser);
 		response.sendRedirect("contact.jsp");
 
 	}

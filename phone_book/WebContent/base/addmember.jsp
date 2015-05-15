@@ -6,7 +6,6 @@
 <%@page import="org.scheming.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,75 +23,49 @@
 	rel='stylesheet' type='text/css'>
 </head>
 <body>
-
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse-01">
-					<span class="sr-only">Toggle navigation</span>
-				</button>
-				<a class="navbar-brand" href="../index.html">Contact</a>
-			</div>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#navbar-collapse-01">
+						<span class="sr-only">Toggle navigation</span>
+					</button>
+					<a class="navbar-brand" href="../index.html">Contact</a>
+				</div>
 			</nav>
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
-
-				<%
-					String id = (String) request.getParameter("user_id");
-					User user = (User) ((UserDao) DaoFactory.getUserDaoInstance())
-							.queryData(id);
-				%>
-
-				<form class="form-info" action="update.action" method="post"
+				<form class="form-info" action="addmember.action" method="post"
 					role="form">
 					<div class="form-group">
 						<div class="col-md-12">
 							<label for="name" class="control-label">学号</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-star"></i> <input type="text" pattern="\d{8}"
-									value="<%=user.getId()%>" readonly="readonly"
 									required="required" autofocus="autofocus" class="form-control"
 									name="input_id" id="name" placeholder="">
 							</div>
 						</div>
 					</div>
+
 					<div class="form-group">
 						<div class="col-md-12">
 							<label for="email" class="control-label">姓名</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-user"></i> <input type="text" name="input_name"
-									value="<%=user.getName()%>" required="required"
-									class="form-control" id="email" placeholder="">
+									required="required" class="form-control" id="email"
+									placeholder="">
 							</div>
 						</div>
 					</div>
-					<%
-						if ((Boolean) request.getSession().getAttribute("ismaster")) {
-					%>
-					<div class="form-group">
-						<div class="col-md-12">
-							<label for="website" class="control-label">密码</label>
-							<div class="templatemo-input-icon-container">
-								<i class="fa fa-lock"></i> <input type="password" value="<%=user.getPw() %>"
-									name="input_pw" required="required" class="form-control"
-									id="website" placeholder="">
-							</div>
-						</div>
-					</div>
-					<%
-						}
-					%>
-
 					<div class="form-group">
 						<div class="col-md-12">
 							<label for="subject" class="control-label">QQ</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-qq"></i> <input type="text" class="form-control"
-									value="<%=user.getQq()%>" name="input_qq"
-									pattern="[1-9][0-9]{4,14}" required="required" id="subject"
-									placeholder="">
+									name="input_qq" pattern="[1-9][0-9]{4,14}" required="required"
+									id="subject" placeholder="">
 							</div>
 						</div>
 					</div>
@@ -101,9 +74,8 @@
 							<label for="subject" class="control-label">电话</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-phone"></i> <input type="text"
-									required="required" value="<%=user.getTel()%>" pattern="\d{11}"
-									class="form-control" id="subject" name="input_tel"
-									placeholder="">
+									required="required" pattern="\d{11}" class="form-control"
+									id="subject" name="input_tel" placeholder="">
 							</div>
 						</div>
 					</div>
@@ -115,20 +87,11 @@
 								<i class="fa fa-phone"></i> <select class="form-control"
 									name="input_class">
 									<%
-										String cla = user.getCla();
 										List<ClassModel> classModels = ((ClassDao) DaoFactory
 												.getClassDaoInstance()).queryAll();
 										for (ClassModel classModel : classModels) {
-											if (cla.equals(classModel.getName())) {
-									%>
-									<option selected="selected"><%=classModel.getName()%></option>
-									<%
-										} else {
 									%>
 									<option><%=classModel.getName()%></option>
-									<%
-										}
-									%>
 									<%
 										}
 									%>
