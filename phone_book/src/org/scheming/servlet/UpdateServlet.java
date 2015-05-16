@@ -35,6 +35,7 @@ public class UpdateServlet extends HttpServlet {
 		dao.updateUser(request.getParameter("input_id"), newUser);
 		response.sendRedirect("contact.jsp");
 
+		dao.close();
 	}
 
 	protected void doPost(HttpServletRequest request,

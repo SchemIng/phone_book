@@ -1,6 +1,7 @@
 package org.scheming.dao;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Map;
 
 /**
@@ -9,7 +10,10 @@ import java.util.Map;
  * @Date 2015年5月10日 下午2:01:50
  * @TODO
  */
-public interface IDAO {
+public abstract class BaseDao {
+
+	protected Connection connection;
+
 	/**
 	 * 添加
 	 * 
@@ -18,7 +22,7 @@ public interface IDAO {
 	 * @date 2015年5月10日 下午5:06:56
 	 * @TODO
 	 */
-	public void add(Object data);
+	public abstract void add(Object data);
 
 	/**
 	 * 更新
@@ -29,7 +33,7 @@ public interface IDAO {
 	 * @date 2015年5月10日 下午5:06:57
 	 * @TODO
 	 */
-	public void updateUser(String id, Map<String, String> newData);
+	public abstract void updateUser(String id, Map<String, String> newData);
 
 	/**
 	 * 查询
@@ -40,6 +44,14 @@ public interface IDAO {
 	 * @date 2015年5月10日 下午5:07:00
 	 * @TODO
 	 */
-	public Object queryData(String id);
+	public abstract Object queryData(String id);
+
+	public void close() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

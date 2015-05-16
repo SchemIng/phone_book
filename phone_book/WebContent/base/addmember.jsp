@@ -87,13 +87,14 @@
 								<i class="fa fa-phone"></i> <select class="form-control"
 									name="input_class">
 									<%
-										List<ClassModel> classModels = ((ClassDao) DaoFactory
-												.getClassDaoInstance()).queryAll();
+										ClassDao dao = (ClassDao) DaoFactory.getClassDaoInstance();
+										List<ClassModel> classModels = dao.queryAll();
 										for (ClassModel classModel : classModels) {
 									%>
 									<option><%=classModel.getName()%></option>
 									<%
 										}
+										dao.close();
 									%>
 								</select>
 							</div>

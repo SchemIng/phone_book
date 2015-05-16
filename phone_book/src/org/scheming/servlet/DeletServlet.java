@@ -23,8 +23,10 @@ public class DeletServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		id = request.getParameter("user_id");
-		((UserDao) DaoFactory.getUserDaoInstance()).delete(id);
+		UserDao dao=(UserDao) DaoFactory.getUserDaoInstance();
+		dao.delete(id);
 		response.sendRedirect("contact.jsp");
+		dao.close();
 	}
 
 	protected void doPost(HttpServletRequest request,

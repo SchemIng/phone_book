@@ -139,6 +139,7 @@
 						</tr>
 						<%
 							}
+							dao.close();
 						%>
 					</tbody>
 

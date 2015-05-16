@@ -41,8 +41,8 @@
 
 				<%
 					String id = (String) request.getParameter("user_id");
-					User user = (User) ((UserDao) DaoFactory.getUserDaoInstance())
-							.queryData(id);
+					UserDao dao = (UserDao) DaoFactory.getUserDaoInstance();
+					User user = (User) dao.queryData(id);
 				%>
 
 				<form class="form-info" action="update.action" method="post"
@@ -75,9 +75,9 @@
 						<div class="col-md-12">
 							<label for="website" class="control-label">密码</label>
 							<div class="templatemo-input-icon-container">
-								<i class="fa fa-lock"></i> <input type="password" value="<%=user.getPw() %>"
-									name="input_pw" required="required" class="form-control"
-									id="website" placeholder="">
+								<i class="fa fa-lock"></i> <input type="password"
+									value="<%=user.getPw()%>" name="input_pw" required="required"
+									class="form-control" id="website" placeholder="">
 							</div>
 						</div>
 					</div>
@@ -131,6 +131,7 @@
 									%>
 									<%
 										}
+										dao.close();
 									%>
 								</select>
 							</div>

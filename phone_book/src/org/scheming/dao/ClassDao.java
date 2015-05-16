@@ -1,6 +1,5 @@
 package org.scheming.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,9 +16,7 @@ import org.scheming.model.ClassModel;
  * @Date 2015年5月10日 下午5:03:34
  * @TODO
  */
-public class ClassDao implements IDAO {
-	private Connection connection;
-
+public class ClassDao extends BaseDao {
 	{
 		try {
 			connection = DBHelp.getConnection();
@@ -121,14 +118,6 @@ public class ClassDao implements IDAO {
 			e.printStackTrace();
 		}
 		return classModels;
-	}
-
-	public void close() {
-		try {
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 						response);
 			}
 		}
+		dao.close();
 
 	}
 

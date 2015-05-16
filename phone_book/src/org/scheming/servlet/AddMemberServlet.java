@@ -38,6 +38,7 @@ public class AddMemberServlet extends HttpServlet {
 		} else {
 
 		}
+		dao.close();
 	}
 
 	protected void doPost(HttpServletRequest request,

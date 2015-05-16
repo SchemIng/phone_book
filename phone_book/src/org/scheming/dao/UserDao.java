@@ -1,6 +1,5 @@
 package org.scheming.dao;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,9 +10,8 @@ import java.util.Map;
 import org.scheming.db.DBHelp;
 import org.scheming.model.User;
 
-public class UserDao implements IDAO {
+public class UserDao extends BaseDao {
 
-	private Connection connection;
 	private Statement statement;
 
 	{
@@ -148,11 +146,4 @@ public class UserDao implements IDAO {
 		return users;
 	}
 
-	public void close() {
-		try {
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 }
