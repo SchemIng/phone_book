@@ -21,8 +21,13 @@ body {
 
 .btn-g {
 	text-align: center;
+	margin-bottom: 18px;
 }
 
-.form-control{
+.form-control {
 	color: #0F0F0F;
+}
+
+.img-circle {
+	width: 180px;
 }

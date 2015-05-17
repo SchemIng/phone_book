@@ -97,10 +97,12 @@ public class UserDao extends BaseDao {
 						results.getString("name"), results.getString("pw"),
 						results.getString("class"), results.getString("tel"),
 						results.getString("qq"), results.getBoolean("ismaster"));
+				user.setPath(results.getString("path"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		return user;
 	}
 

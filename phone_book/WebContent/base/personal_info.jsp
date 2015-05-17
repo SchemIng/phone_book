@@ -17,7 +17,6 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- Loading Flat UI -->
 <link href="../flat_ui/css/flat-ui.css" rel="stylesheet">
-<link rel="shortcut icon" href="../flat_ui/img/favicon.ico">
 <link href="../css/myinfo.css" rel="stylesheet">
 <link
 	href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300'
@@ -45,16 +44,23 @@
 					User user = (User) dao.queryData(id);
 				%>
 
+				<div style="text-align: center;">
+					<img src="<%="../user_head/" + user.getPath()%>" class="img-circle" />
+				</div>
 				<form class="form-info" action="update.action" method="post"
-					role="form">
+					enctype="multipart/form-data" role="form">
+					<div class="form-group">
+						<label for="name" class="control-label">头像</label> <input
+							name="file" type="file" />
+					</div>
 					<div class="form-group">
 						<div class="col-md-12">
 							<label for="name" class="control-label">学号</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-star"></i> <input type="text" pattern="\d{8}"
 									value="<%=user.getId()%>" readonly="readonly"
-									required="required" autofocus="autofocus" class="form-control"
-									name="input_id" id="name" placeholder="">
+									required="required" class="form-control"
+									name="id" id="name" placeholder="">
 							</div>
 						</div>
 					</div>
@@ -62,7 +68,7 @@
 						<div class="col-md-12">
 							<label for="email" class="control-label">姓名</label>
 							<div class="templatemo-input-icon-container">
-								<i class="fa fa-user"></i> <input type="text" name="input_name"
+								<i class="fa fa-user"></i> <input type="text" name="name"
 									value="<%=user.getName()%>" required="required"
 									class="form-control" id="email" placeholder="">
 							</div>
@@ -76,7 +82,7 @@
 							<label for="website" class="control-label">密码</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-lock"></i> <input type="password"
-									value="<%=user.getPw()%>" name="input_pw" required="required"
+									value="<%=user.getPw()%>" name="pw" required="required"
 									class="form-control" id="website" placeholder="">
 							</div>
 						</div>
@@ -90,7 +96,7 @@
 							<label for="subject" class="control-label">QQ</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-qq"></i> <input type="text" class="form-control"
-									value="<%=user.getQq()%>" name="input_qq"
+									value="<%=user.getQq()%>" name="qq"
 									pattern="[1-9][0-9]{4,14}" required="required" id="subject"
 									placeholder="">
 							</div>
@@ -102,7 +108,7 @@
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-phone"></i> <input type="text"
 									required="required" value="<%=user.getTel()%>" pattern="\d{11}"
-									class="form-control" id="subject" name="input_tel"
+									class="form-control" id="subject" name="tel"
 									placeholder="">
 							</div>
 						</div>
@@ -113,7 +119,7 @@
 							<label for="subject" class="control-label">班级</label>
 							<div class="templatemo-input-icon-container">
 								<i class="fa fa-phone"></i> <select class="form-control"
-									name="input_class">
+									name="class">
 									<%
 										String cla = user.getCla();
 										List<ClassModel> classModels = ((ClassDao) DaoFactory
