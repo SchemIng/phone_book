@@ -65,6 +65,7 @@ public class UpdateServlet extends HttpServlet {
 				newUser.put(item.getFieldName(), item.getString("UTF-8"));
 			}
 		}
+		name = name.substring(name.indexOf('.'));
 		try {
 			head.write(new File(path + newUser.get("id") + name));
 		} catch (Exception e) {
