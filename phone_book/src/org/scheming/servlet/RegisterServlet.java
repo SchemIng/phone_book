@@ -41,7 +41,9 @@ public class RegisterServlet extends HttpServlet {
 					Boolean.valueOf(user.isIsmaster()));
 			response.sendRedirect("base/contact.jsp");
 		} else {
-
+			request.setAttribute("error_msg", "用户已存在");
+			request.getRequestDispatcher("error.jsp").forward(request,
+					response);
 		}
 		dao.close();
 	}

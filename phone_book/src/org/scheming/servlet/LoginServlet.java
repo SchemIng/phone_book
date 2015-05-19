@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 		User user = (User) dao.queryData(input_id);
 		if (user == null) {
 			request.setAttribute("error_msg", "用户不存在");
-			request.getRequestDispatcher("base/error.jsp").forward(request,
+			request.getRequestDispatcher("error.jsp").forward(request,
 					response);
 			// response.sendRedirect("/base/error.jsp");
 		} else {
@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("base/contact.jsp");
 			} else {
 				request.setAttribute("error_msg", "密码错误");
-				request.getRequestDispatcher("base/error.jsp").forward(request,
+				request.getRequestDispatcher("error.jsp").forward(request,
 						response);
 			}
 		}
