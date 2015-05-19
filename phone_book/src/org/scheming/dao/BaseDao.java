@@ -52,6 +52,7 @@ public abstract class BaseDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		connection = null;
 	}
 
 }

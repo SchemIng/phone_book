@@ -16,6 +16,12 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.scheming.model.User;
 
+/**
+ * 导出Excel表格
+ * @author Scheming
+ * @Date 2015年5月19日 下午8:34:45
+ * @TODO
+ */
 @WebServlet("/base/export.action")
 public class ExportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
