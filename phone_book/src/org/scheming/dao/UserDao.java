@@ -23,18 +23,22 @@ public class UserDao extends BaseDao {
 		}
 	}
 
-	/**
-	 * 添加用户
-	 * 
-	 * @param data
-	 */
+	
 	@Override
 	public void add(Object data) {
 		User user = (User) data;
-		String sql = "insert into user values('" + user.getId() + "','"
-				+ user.getPw() + "','" + user.getCla() + "','" + user.getTel()
-				+ "','" + user.getQq() + "','" + user.getName() + "',"
-				+ user.isIsmaster() + ");";
+		String sql = "insert into test.user (`id`,`pw`,`class`,`tel`,`qq`,`name`,`ismaster`) values('"
+				+ user.getId()
+				+ "','"
+				+ user.getPw()
+				+ "','"
+				+ user.getCla()
+				+ "','"
+				+ user.getTel()
+				+ "','"
+				+ user.getQq()
+				+ "','"
+				+ user.getName() + "'," + user.isIsmaster() + ");";
 		try {
 			statement.execute(sql);
 		} catch (SQLException e) {
@@ -56,12 +60,7 @@ public class UserDao extends BaseDao {
 		}
 	}
 
-	/**
-	 * 查询班级里所有人信息
-	 * 
-	 * @param id
-	 * @return
-	 */
+	
 	public ResultSet queryClassData(String id) {
 		String cla = null;
 		ResultSet results = null;
@@ -79,12 +78,7 @@ public class UserDao extends BaseDao {
 		return results;
 	}
 
-	/**
-	 * 查询用户信息
-	 * 
-	 * @param id
-	 * @return
-	 */
+	
 	@Override
 	public Object queryData(String id) {
 		ResultSet results;
@@ -106,14 +100,7 @@ public class UserDao extends BaseDao {
 		return user;
 	}
 
-	/**
-	 * 删除
-	 * 
-	 * @param id
-	 * @author Scheming
-	 * @date 2015年5月15日 下午2:15:09
-	 * @TODO
-	 */
+	
 	public void delete(String id) {
 		try {
 			statement.execute("DELETE FROM `test`.`user` WHERE `id`='" + id
@@ -123,13 +110,7 @@ public class UserDao extends BaseDao {
 		}
 	}
 
-	/**
-	 * @param name
-	 * @return
-	 * @author Scheming
-	 * @date 2015年5月15日 下午2:25:14
-	 * @TODO
-	 */
+	
 	public List<User> queryByName(String name) {
 		List<User> users = new ArrayList<User>();
 		try {

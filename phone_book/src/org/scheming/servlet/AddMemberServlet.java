@@ -12,13 +12,8 @@ import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
-/**
- * 管理员添加用户
- * @author Scheming
- * @Date 2015年5月19日 下午8:34:13
- * @TODO
- */
-@WebServlet("/addmember.action")
+
+@WebServlet("/base/addmember.action")
 public class AddMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,9 +38,11 @@ public class AddMemberServlet extends HttpServlet {
 			user.setCla(request.getParameter("input_class"));
 
 			dao.add(user);
-			response.sendRedirect("base/contact.jsp");
+			response.sendRedirect("contact.jsp");
 		} else {
-
+			request.setAttribute("error_msg", "用户已存在");
+			request.getRequestDispatcher("error.jsp").forward(request,
+					response);
 		}
 		dao.close();
 	}

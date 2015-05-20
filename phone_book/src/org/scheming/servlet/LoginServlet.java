@@ -12,13 +12,7 @@ import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
-/**
- * 用户登录
- * 
- * @author Scheming
- * @Date 2015年5月19日 下午8:34:59
- * @TODO
- */
+
 @WebServlet("/login.action")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,7 +33,6 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("error_msg", "用户不存在");
 			request.getRequestDispatcher("error.jsp")
 					.forward(request, response);
-			// response.sendRedirect("/base/error.jsp");
 		} else {
 			if (input_pw.equals(user.getPw())) {
 				request.getSession().setAttribute("user_id", input_id);

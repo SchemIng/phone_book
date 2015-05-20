@@ -1,5 +1,6 @@
 package org.scheming.model;
 
+
 public class User {
 	String id;
 	String name;
@@ -11,19 +12,9 @@ public class User {
 	boolean ismaster;
 
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param name
-	 * @param pw
-	 * @param cla
-	 * @param tel
-	 * @param qq
-	 * @param path
-	 * @param ismaster
-	 */
+	
 	public User(String id, String name, String pw, String cla, String tel,
 			String qq, boolean ismaster) {
 		super();
@@ -37,17 +28,12 @@ public class User {
 		this.path = "user_head_default.png";
 	}
 
-	/**
-	 * @return path
-	 */
+	
 	public String getPath() {
 		return path;
 	}
 
-	/**
-	 * @param path
-	 *            要设置的 path
-	 */
+	
 	public void setPath(String path) {
 		this.path = path;
 	}
@@ -108,9 +94,7 @@ public class User {
 		this.ismaster = ismaster;
 	}
 
-	/* （非 Javadoc）
-	 * @see java.lang.Object#toString()
-	 */
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", pw=" + pw + ", cla="

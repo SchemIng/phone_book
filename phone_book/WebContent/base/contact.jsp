@@ -98,7 +98,7 @@
 								} else {
 							%>
 							<textarea class="form-control" rows="10" readonly="readonly"
-								name="notice">
+								style="color: #0F0F0F;" name="notice">
 							<%=classDao.queryNotice(lists.get(0).getCla())%>
 							</textarea>
 							<%

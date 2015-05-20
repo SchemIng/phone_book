@@ -14,6 +14,7 @@ import org.scheming.dao.ClassDao;
 import org.scheming.dao.DaoFactory;
 import org.scheming.model.User;
 
+
 @WebServlet("/base/notice.action")
 public class UpdateNotice extends HttpServlet {
 	private static final long serialVersionUID = 1L;

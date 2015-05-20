@@ -8,12 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-/**
- * 
- * @author Scheming
- * @Date 2015年5月7日 下午10:13:10
- * @TODO
- */
+
 public class CharsetFilter implements Filter {
 	private static final String CHARSET_STRING = "charSet";
 	private String charset;
@@ -21,15 +16,11 @@ public class CharsetFilter implements Filter {
 	public CharsetFilter() {
 	}
 
-	/**
-	 * @see Filter#destroy()
-	 */
+	
 	public void destroy() {
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
+	
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding(charset);
@@ -37,9 +28,7 @@ public class CharsetFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
+	
 	public void init(FilterConfig fConfig) throws ServletException {
 		charset = fConfig.getInitParameter(CHARSET_STRING);
 	}

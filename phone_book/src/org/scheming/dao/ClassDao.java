@@ -10,12 +10,7 @@ import java.util.Map;
 import org.scheming.db.DBHelp;
 import org.scheming.model.ClassModel;
 
-/**
- * 
- * @author Scheming
- * @Date 2015年5月10日 下午5:03:34
- * @TODO
- */
+
 public class ClassDao extends BaseDao {
 	{
 		try {
@@ -25,11 +20,7 @@ public class ClassDao extends BaseDao {
 		}
 	}
 
-	/*
-	 * （非 Javadoc）
-	 * 
-	 * @see org.scheming.dao.IDAO#add(java.lang.Object)
-	 */
+	
 	@Override
 	public void add(Object data) {
 		ClassModel classModel = (ClassModel) data;
@@ -44,11 +35,7 @@ public class ClassDao extends BaseDao {
 		}
 	}
 
-	/*
-	 * （非 Javadoc）
-	 * 
-	 * @see org.scheming.dao.IDAO#updateUser(java.lang.String, java.util.Map)
-	 */
+	
 	@Override
 	public void update(String name, Map<String, String> newData) {
 		for (String key : newData.keySet()) {
@@ -64,12 +51,7 @@ public class ClassDao extends BaseDao {
 		}
 	}
 
-	/*
-	 * （非 Javadoc） UPDATE `test`.`class` SET `stu_sum`='4' WHERE `id`='2';
-	 * SELECT * FROM test.class where class_name='软件1302';
-	 * 
-	 * @see org.scheming.dao.IDAO#queryData(java.lang.String)
-	 */
+	
 	@Override
 	public Object queryData(String name) {
 		ResultSet resultSet = null;
@@ -96,14 +78,7 @@ public class ClassDao extends BaseDao {
 		return classModel;
 	}
 
-	/**
-	 * 查询所有班级
-	 * 
-	 * @return
-	 * @author Scheming
-	 * @date 2015年5月19日 下午8:59:22
-	 * @TODO
-	 */
+	
 	public List<ClassModel> queryAll() {
 		ResultSet resultSet = null;
 		ClassModel classModel = null;

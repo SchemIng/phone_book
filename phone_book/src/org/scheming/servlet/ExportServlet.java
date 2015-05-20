@@ -2,6 +2,7 @@ package org.scheming.servlet;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,12 +17,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.scheming.model.User;
 
-/**
- * 导出Excel表格
- * @author Scheming
- * @Date 2015年5月19日 下午8:34:45
- * @TODO
- */
+
 @WebServlet("/base/export.action")
 public class ExportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,10 +31,12 @@ public class ExportServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		List<User> lists = (List<User>) getServletContext().getAttribute(
 				"lists_" + request.getSession().getAttribute("user_id"));
+		String filename = ((User) request.getSession().getAttribute("user"))
+				.getCla() + "班级通讯录" + ".xls";
 
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("Content-Disposition", "inline; filename="
-				+ "phone_book.xls");
+				+ URLEncoder.encode(filename, "UTF-8"));
 
 		OutputStream outputStream = response.getOutputStream();
 		doExcle(outputStream, lists);

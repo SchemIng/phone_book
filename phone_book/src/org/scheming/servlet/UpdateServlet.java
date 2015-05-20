@@ -21,6 +21,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 
+
 @WebServlet("/base/update.action")
 public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,12 +35,7 @@ public class UpdateServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @param request
-	 * @author Scheming
-	 * @date 2015年5月17日 下午1:22:25
-	 * @TODO
-	 */
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String path = "F:/user_head/user_head_";
@@ -64,41 +60,33 @@ public class UpdateServlet extends HttpServlet {
 				newUser.put(item.getFieldName(), item.getString("UTF-8"));
 			}
 		}
-		name = name.substring(name.indexOf('.'));
-		try {
-			head.write(new File(path + newUser.get("id") + name));
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (name != null && !name.equals("")) {
+			name = name.substring(name.indexOf('.'));
+			try {
+				head.write(new File(path + newUser.get("id") + name));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			newUser.put("path", "user_head_" + newUser.get("id") + name);
 		}
 
-		newUser.put("path", "user_head_" + newUser.get("id") + name);
 		dao.update(newUser.get("id"), newUser);
 		response.sendRedirect("contact.jsp");
 		dao.close();
 	}
 
-	/**
-	 * @param request
-	 * @return
-	 * @author Scheming
-	 * @date 2015年5月17日 下午3:03:47
-	 * @TODO
-	 */
+	
 	private Iterator<FileItem> Init(HttpServletRequest request) {
-		// Create a factory for disk-based file items
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
-		// Configure a repository (to ensure a secure temp location is used)
 		ServletContext servletContext = this.getServletConfig()
 				.getServletContext();
 		File repository = (File) servletContext
 				.getAttribute("javax.servlet.context.tempdir");
 		factory.setRepository(repository);
 
-		// Create a new file upload handler
 		ServletFileUpload upload = new ServletFileUpload(factory);
 
-		// Parse the request
 		List<FileItem> items = null;
 		try {
 			items = upload.parseRequest(request);
@@ -106,7 +94,6 @@ public class UpdateServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// Process the uploaded items
 		Iterator<FileItem> iterator = items.iterator();
 		return iterator;
 	}
