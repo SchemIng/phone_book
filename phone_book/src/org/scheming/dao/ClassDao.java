@@ -50,7 +50,7 @@ public class ClassDao extends BaseDao {
 	 * @see org.scheming.dao.IDAO#updateUser(java.lang.String, java.util.Map)
 	 */
 	@Override
-	public void updateUser(String name, Map<String, String> newData) {
+	public void update(String name, Map<String, String> newData) {
 		for (String key : newData.keySet()) {
 			String sql = "UPDATE `test`.`class` SET `" + key + "`='"
 					+ newData.get(key) + "' WHERE `class_name`='" + name + "';";
@@ -87,7 +87,8 @@ public class ClassDao extends BaseDao {
 			while (resultSet.next()) {
 				classModel = new ClassModel(resultSet.getInt("id"),
 						resultSet.getString("class_name"),
-						resultSet.getInt("stu_sum"));
+						resultSet.getInt("stu_sum"),
+						resultSet.getString("class_notice"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -95,11 +96,19 @@ public class ClassDao extends BaseDao {
 		return classModel;
 	}
 
+	/**
+	 * 查询所有班级
+	 * 
+	 * @return
+	 * @author Scheming
+	 * @date 2015年5月19日 下午8:59:22
+	 * @TODO
+	 */
 	public List<ClassModel> queryAll() {
 		ResultSet resultSet = null;
 		ClassModel classModel = null;
 		List<ClassModel> classModels = new ArrayList<ClassModel>();
-		String sql = "SELECT * FROM test.class;";
+		String sql = "SELECT class_name FROM test.class;";
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
@@ -109,9 +118,8 @@ public class ClassDao extends BaseDao {
 		}
 		try {
 			while (resultSet.next()) {
-				classModel = new ClassModel(resultSet.getInt("id"),
-						resultSet.getString("class_name"),
-						resultSet.getInt("stu_sum"));
+				classModel = new ClassModel();
+				classModel.setName(resultSet.getString("class_name"));
 				classModels.add(classModel);
 			}
 		} catch (SQLException e) {
@@ -120,4 +128,23 @@ public class ClassDao extends BaseDao {
 		return classModels;
 	}
 
+	public String queryNotice(String name) {
+		String result = "";
+		String sql = "SELECT class_notice FROM test.class where class_name='"
+				+ name + "';";
+		ResultSet resultSet;
+
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				result = resultSet.getString("class_notice");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 }

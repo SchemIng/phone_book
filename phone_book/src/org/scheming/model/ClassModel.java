@@ -11,18 +11,30 @@ public class ClassModel {
 	private int id;
 	private String name;
 	private int sum;
+	private String notice;
+
+	/**
+	 * 
+	 */
+	public ClassModel() {
+	}
+	
 
 	/**
 	 * @param id
 	 * @param name
 	 * @param sum
+	 * @param notice
 	 */
-	public ClassModel(int id, String name, int sum) {
+	public ClassModel(int id, String name, int sum, String notice) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.sum = sum;
+		this.notice = notice;
 	}
+
+
 
 	/**
 	 * @return id
@@ -67,6 +79,21 @@ public class ClassModel {
 	 */
 	public void setSum(int sum) {
 		this.sum = sum;
+	}
+
+	/**
+	 * @return notice
+	 */
+	public String getNotice() {
+		return notice;
+	}
+
+	/**
+	 * @param notice
+	 *            ÒªÉèÖÃµÄ notice
+	 */
+	public void setNotice(String notice) {
+		this.notice = notice;
 	}
 
 }

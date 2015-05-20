@@ -1,3 +1,4 @@
+<%@page import="org.scheming.dao.ClassDao"%>
 <%@page import="org.scheming.dao.DaoFactory"%>
 <%@page import="java.util.Set"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
@@ -46,6 +47,8 @@
 		} else {
 			lists = dao.queryByName(request.getParameter("data"));
 		}
+
+		ClassDao classDao = (ClassDao) DaoFactory.getClassDaoInstance();
 	%>
 	<div class="container-fluid">
 		<div class="row-fluid">
@@ -79,7 +82,42 @@
 
 			</div>
 			</nav>
-			<div class="col-md-2"></div>
+
+			<div class="col-md-2">
+				<div class="span12">
+					<form action="notice.action" method="post" class="alert">
+						<div class="form-group">
+							<h4>通知</h4>
+							<%
+								if ((Boolean) request.getSession().getAttribute("ismaster")) {
+							%>
+							<textarea class="form-control" rows="10" name="notice">
+							<%=classDao.queryNotice(lists.get(0).getCla())%>
+							</textarea>
+							<%
+								} else {
+							%>
+							<textarea class="form-control" rows="10" readonly="readonly"
+								name="notice">
+							<%=classDao.queryNotice(lists.get(0).getCla())%>
+							</textarea>
+							<%
+								}
+							%>
+
+
+						</div>
+						<%
+							if ((Boolean) request.getSession().getAttribute("ismaster")) {
+						%>
+						<button type="submit" class="btn btn-primary">修改</button>
+						<%
+							}
+						%>
+					</form>
+				</div>
+
+			</div>
 			<div class="col-md-8">
 
 				<!-- Table -->

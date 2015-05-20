@@ -72,7 +72,7 @@ public class UpdateServlet extends HttpServlet {
 		}
 
 		newUser.put("path", "user_head_" + newUser.get("id") + name);
-		dao.updateUser(newUser.get("id"), newUser);
+		dao.update(newUser.get("id"), newUser);
 		response.sendRedirect("contact.jsp");
 		dao.close();
 	}

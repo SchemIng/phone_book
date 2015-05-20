@@ -43,7 +43,7 @@ public class UserDao extends BaseDao {
 	}
 
 	@Override
-	public void updateUser(String id, Map<String, String> newData) {
+	public void update(String id, Map<String, String> newData) {
 		try {
 
 			for (String key : newData.keySet()) {

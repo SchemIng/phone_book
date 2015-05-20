@@ -33,7 +33,7 @@ public abstract class BaseDao {
 	 * @date 2015年5月10日 下午5:06:57
 	 * @TODO
 	 */
-	public abstract void updateUser(String id, Map<String, String> newData);
+	public abstract void update(String id, Map<String, String> newData);
 
 	/**
 	 * 查询
