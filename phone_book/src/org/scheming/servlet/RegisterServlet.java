@@ -12,7 +12,13 @@ import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
-
+/**
+ * 注册
+ * 
+ * @author Scheming
+ * @Date 2015年5月20日 下午8:57:32
+ * @TODO
+ */
 @WebServlet("/register.action")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,9 +31,9 @@ public class RegisterServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		UserDao dao = (UserDao) DaoFactory.getUserDaoInstance();
 		User reUser = (User) dao.queryData(request.getParameter("input_id"));
-		
+
 		if (reUser == null) {
-			
+
 			User user = new User();
 			user.setId(request.getParameter("input_id"));
 			user.setPw(request.getParameter("input_pw"));
@@ -35,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 			user.setQq(request.getParameter("input_qq"));
 			user.setTel(request.getParameter("input_tel"));
 			user.setCla(request.getParameter("input_class"));
-			
+
 			dao.add(user);
 			request.getSession().setAttribute("user_id", user.getId());
 			request.getSession().setAttribute("user", user);
@@ -44,8 +50,8 @@ public class RegisterServlet extends HttpServlet {
 			response.sendRedirect("base/contact.jsp");
 		} else {
 			request.setAttribute("error_msg", "用户已存在");
-			request.getRequestDispatcher("error.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("error.jsp")
+					.forward(request, response);
 		}
 		dao.close();
 	}

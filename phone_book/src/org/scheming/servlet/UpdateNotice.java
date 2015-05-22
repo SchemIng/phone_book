@@ -15,6 +15,13 @@ import org.scheming.dao.DaoFactory;
 import org.scheming.model.User;
 
 
+/**
+ * 更新通知
+ * 
+ * @author Scheming
+ * @Date 2015年5月20日 下午8:57:42
+ * @TODO
+ */
 @WebServlet("/base/notice.action")
 public class UpdateNotice extends HttpServlet {
 	private static final long serialVersionUID = 1L;

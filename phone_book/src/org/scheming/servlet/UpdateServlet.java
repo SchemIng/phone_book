@@ -21,7 +21,13 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 
-
+/**
+ * 更新用户信息
+ * 
+ * @author Scheming
+ * @Date 2015年5月20日 下午8:57:52
+ * @TODO
+ */
 @WebServlet("/base/update.action")
 public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,7 +41,6 @@ public class UpdateServlet extends HttpServlet {
 
 	}
 
-	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String path = "F:/user_head/user_head_";
@@ -75,7 +80,6 @@ public class UpdateServlet extends HttpServlet {
 		dao.close();
 	}
 
-	
 	private Iterator<FileItem> Init(HttpServletRequest request) {
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 

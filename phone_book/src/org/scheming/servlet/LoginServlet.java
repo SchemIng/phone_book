@@ -12,7 +12,13 @@ import org.scheming.dao.DaoFactory;
 import org.scheming.dao.UserDao;
 import org.scheming.model.User;
 
-
+/**
+ * 登陆
+ * 
+ * @author Scheming
+ * @Date 2015年5月20日 下午8:55:45
+ * @TODO
+ */
 @WebServlet("/login.action")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -40,6 +40,7 @@
 				lists.add(new User(set.getString("id"), set
 						.getString("name"), null, set.getString("class"),
 						set.getString("tel"), set.getString("qq"), set
+								.getString("path"), set
 								.getBoolean("ismaster")));
 			}
 			getServletContext().setAttribute("lists_" + id, lists);
@@ -78,6 +79,7 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="navbar-link" href="export.action">导出Excel表格</a></li>
+					<li><a class="navbar-link" href="logout.action">登出</a></li>
 				</ul>
 
 			</div>
@@ -124,7 +126,7 @@
 				<table class="table contact_list table-hover">
 					<thead>
 						<tr>
-							<th>序号</th>
+							<th>头像</th>
 							<th>姓名</th>
 							<th>QQ号</th>
 							<th>电话号码</th>
@@ -149,7 +151,8 @@
 								}
 							%>
 
-							<td><%=i + 1%></td>
+							<td><img class="user_head" alt=""
+								src="<%="../user_head/" + user.getPath()%>"></td>
 							<%
 								if (user.getId().equals(id)
 											|| (Boolean) request.getSession().getAttribute(
@@ -178,6 +181,7 @@
 						<%
 							}
 							dao.close();
+							classDao.close();
 						%>
 					</tbody>
 

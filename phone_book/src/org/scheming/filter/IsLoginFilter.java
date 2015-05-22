@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
-
+/**
+ * 登陆验证
+ * 
+ * @author Scheming
+ * @Date 2015年5月20日 下午8:54:46
+ * @TODO
+ */
 public class IsLoginFilter implements Filter {
 	private static final String PAGE_STRING = "login_page";
 	private String page_url;
@@ -22,11 +26,9 @@ public class IsLoginFilter implements Filter {
 	public IsLoginFilter() {
 	}
 
-	
 	public void destroy() {
 	}
 
-	
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
@@ -39,7 +41,6 @@ public class IsLoginFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	
 	public void init(FilterConfig fConfig) throws ServletException {
 		page_url = fConfig.getInitParameter(PAGE_STRING);
 	}

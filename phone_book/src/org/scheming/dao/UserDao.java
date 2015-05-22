@@ -10,6 +10,12 @@ import java.util.Map;
 import org.scheming.db.DBHelp;
 import org.scheming.model.User;
 
+/**
+ * 
+ * @author Scheming
+ * @Date 2015年5月20日 下午8:54:01
+ * @TODO
+ */
 public class UserDao extends BaseDao {
 
 	private Statement statement;
@@ -23,7 +29,11 @@ public class UserDao extends BaseDao {
 		}
 	}
 
-	
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see org.scheming.dao.BaseDao#add(java.lang.Object)
+	 */
 	@Override
 	public void add(Object data) {
 		User user = (User) data;
@@ -46,6 +56,11 @@ public class UserDao extends BaseDao {
 		}
 	}
 
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see org.scheming.dao.BaseDao#update(java.lang.String, java.util.Map)
+	 */
 	@Override
 	public void update(String id, Map<String, String> newData) {
 		try {
@@ -60,7 +75,15 @@ public class UserDao extends BaseDao {
 		}
 	}
 
-	
+	/**
+	 * 查询用户的同班同学
+	 * 
+	 * @param id
+	 * @return
+	 * @author Scheming
+	 * @date 2015年5月20日 下午8:51:35
+	 * @TODO
+	 */
 	public ResultSet queryClassData(String id) {
 		String cla = null;
 		ResultSet results = null;
@@ -78,7 +101,11 @@ public class UserDao extends BaseDao {
 		return results;
 	}
 
-	
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see org.scheming.dao.BaseDao#queryData(java.lang.String)
+	 */
 	@Override
 	public Object queryData(String id) {
 		ResultSet results;
@@ -90,7 +117,8 @@ public class UserDao extends BaseDao {
 				user = new User(results.getString("id"),
 						results.getString("name"), results.getString("pw"),
 						results.getString("class"), results.getString("tel"),
-						results.getString("qq"), results.getBoolean("ismaster"));
+						results.getString("qq"), results.getString("path"),
+						results.getBoolean("ismaster"));
 				user.setPath(results.getString("path"));
 			}
 		} catch (SQLException e) {
@@ -100,7 +128,15 @@ public class UserDao extends BaseDao {
 		return user;
 	}
 
-	
+	/**
+	 * 删除用户
+	 * 
+	 * @param id
+	 *            用户学号
+	 * @author Scheming
+	 * @date 2015年5月20日 下午8:52:07
+	 * @TODO
+	 */
 	public void delete(String id) {
 		try {
 			statement.execute("DELETE FROM `test`.`user` WHERE `id`='" + id
@@ -110,7 +146,15 @@ public class UserDao extends BaseDao {
 		}
 	}
 
-	
+	/**
+	 * 搜索
+	 * 
+	 * @param name
+	 * @return
+	 * @author Scheming
+	 * @date 2015年5月20日 下午8:52:25
+	 * @TODO
+	 */
 	public List<User> queryByName(String name) {
 		List<User> users = new ArrayList<User>();
 		try {
@@ -121,7 +165,8 @@ public class UserDao extends BaseDao {
 				users.add(new User(results.getString("id"), results
 						.getString("name"), results.getString("pw"), results
 						.getString("class"), results.getString("tel"), results
-						.getString("qq"), results.getBoolean("ismaster")));
+						.getString("qq"), results.getString("path"), results
+						.getBoolean("ismaster")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

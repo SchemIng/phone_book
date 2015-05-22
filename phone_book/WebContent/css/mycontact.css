@@ -38,10 +38,17 @@ body {
 	margin-top: 50px;
 }
 
-.alert{
+.alert {
 	margin-top: 50px;
 }
 
 .col-md-8 {
 	background-color: #FFF8DC;
+}
+
+.user_head {
+	height: expression(this.width > 40 ? this.height = this.height * 48/
+		this.width : "auto");
+	width: expression(this.width > 48 ? "48px" : "auto");
+	max-width: 48px;
 }

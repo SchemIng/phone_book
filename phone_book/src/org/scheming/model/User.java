@@ -14,9 +14,8 @@ public class User {
 	public User() {
 	}
 
-	
 	public User(String id, String name, String pw, String cla, String tel,
-			String qq, boolean ismaster) {
+			String qq, String path, boolean ismaster) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -24,11 +23,13 @@ public class User {
 		this.cla = cla;
 		this.tel = tel;
 		this.qq = qq;
+		this.path = path;
 		this.ismaster = ismaster;
-		this.path = "user_head_default.png";
 	}
 
-	
+
+
+
 	public String getPath() {
 		return path;
 	}
